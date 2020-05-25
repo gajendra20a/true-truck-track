@@ -1,0 +1,13 @@
+<div class="truck-component">
+  <h2>Trucks List</h2>
+  <ul class="trucks">
+    <li *ngFor="let truck of trucks" 
+      [class.selected]="truck === selectedTruck"
+      (click)="onSelect(truck)">
+      <div class="truck-info">
+        <div class="truck-number">{{truck.name}}</div>
+        <div class="truck-status">Stopped Since last {{truck.count}}{{truck.delay}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
