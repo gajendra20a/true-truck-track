@@ -2,20 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Truck } from '../truck';
 import { TRUCKS } from '../truck-data';
 
+import { TruckDataService } from './../truck-data.service';
+
 @Component({
   selector: 'app-truck-top',
   templateUrl: './truck-top.component.html',
   styleUrls: ['./truck-top.component.css']
 })
 export class TruckTopComponent implements OnInit {
-  trucks = TRUCKS;
+  trucks;
   selectedTruck: Truck;
   
   onSelect(truck: Truck): void {
-    this.selectedTruck = truck;
+    this.trucks = this.truckDataService.getTrucks();
   }
 
-  constructor() { }
+  constructor(
+    private truckDataService: TruckDataService,
+  ) { }
 
   ngOnInit(): void {
   }
