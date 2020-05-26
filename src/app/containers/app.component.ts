@@ -25,20 +25,14 @@ export class AppComponent implements OnInit {
 
   public displayTruckType(event) {
     let displayTrucks: APITruck[] = [];
+    let truckStatus: string;
     if (event === total) {
       displayTrucks = this.allTrucks;
     } else {
-      this.allTrucks.forEach((truck) => {
-        switch (this.truckDataService.getTruckType(truck)) {
-          case running:
-            displayTrucks = [...displayTrucks, ...[truck]];
-            break;
-          case stopped:
-            displayTrucks = [...displayTrucks, ...[truck]];
-            break;
-          case idle:
-            displayTrucks = [...displayTrucks, ...[truck]];
-            break;
+      this.allTrucks.filter((truck) => {
+        truckStatus = this.truckDataService.getTruckType(truck);
+        if (event === truckStatus){
+          displayTrucks = [...displayTrucks, ...[truck]];
         }
       });
     }
