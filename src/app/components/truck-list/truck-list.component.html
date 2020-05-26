@@ -1,6 +1,6 @@
 <div class="truck-component">
+  <input class='truck-search' [formControl]="input" (keyup)="inputChanged()" placeholder='Search Truck' type="text"/>
   <div class="trucks">
-    <input [formControl]="input" (keyup)="inputChanged()" placeholder='Search Truck' />
     <div *ngFor="let truck of displayList">
       <div class="truck-info">
         <div class="truck-number">{{truck.truckNumber}}</div>
