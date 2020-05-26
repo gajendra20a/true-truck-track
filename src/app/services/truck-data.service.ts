@@ -31,7 +31,7 @@ export class TruckDataService {
     if (runningState && ignitionOn) {
       return running;
     }
-    else if ( runningState && !ignitionOn ){
+    else if ( !runningState && ignitionOn ){
       return idle;
     }
     return stopped;
