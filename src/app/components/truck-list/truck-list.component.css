@@ -6,22 +6,17 @@
   text-align: center;
 }
 
-.trucks {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-}
-
 .trucks .truck-info{
-  padding: 0.2vw 1vw;
+  background-color: lightgrey;
+  font-size: 12px;
+  height: 3rem;
+  margin: 1px 0;
+  padding: 5px 10px;
+  width: 100%;
+
 }
 
 .truck-info .truck-number{
-  font-size: 1.2vw;
-  margin: 0.2vw 0;
-}
-
-.truck-info{
-  font-size: 1vw;
-  margin: 0.2vw 0;
+  font-size: 18px;
+  margin: 5px 10px;
 }

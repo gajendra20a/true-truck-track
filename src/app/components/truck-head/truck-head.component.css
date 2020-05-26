@@ -1,6 +1,19 @@
 .truck-head-component {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-gap: 1px;
+}
+
+.truck-status{
+  background-color: lightgray;  
+  padding: 10px;
+}
+
+.truck-status-title, .truck-status-count {
+  text-align: center;
+}
+
+.truck-status-count{
+  font-size: 20px;
+  font-weight: 500;
 }
