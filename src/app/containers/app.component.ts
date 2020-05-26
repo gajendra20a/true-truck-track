@@ -1,6 +1,7 @@
+import { error } from './../services/truck-data.service';
 import {Component, OnInit} from '@angular/core';
 import {APITruck} from "../models/apiTruck";
-import {running, stopped, total, TruckDataService} from "../services/truck-data.service";
+import {running, stopped, total, idle, TruckDataService} from "../services/truck-data.service";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,6 @@ import {running, stopped, total, TruckDataService} from "../services/truck-data.
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title: string = 'Truck Monitoring App';
 
   public allTrucks: APITruck[] = [];
   public listDisplayTrucks: APITruck[] = [];
@@ -31,12 +31,16 @@ export class AppComponent implements OnInit {
       this.allTrucks.forEach((truck) => {
         switch (this.truckDataService.getTruckType(truck)) {
           case running:
-            displayTrucks = displayTrucks.concat(truck)
+            displayTrucks = [...displayTrucks, ...[truck]];
             break;
           case stopped:
+            displayTrucks = [...displayTrucks, ...[truck]];
+            break;
+          case idle:
+            displayTrucks = [...displayTrucks, ...[truck]];
             break;
         }
-      })
+      });
     }
     this.listDisplayTrucks = displayTrucks;
   }

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APITruck} from "../../models/apiTruck";
 import {FormControl} from "@angular/forms";
-import {running, stopped, total, TruckDataService} from "../../services/truck-data.service";
+import {running, stopped, total, TruckDataService, idle} from "../../services/truck-data.service";
 
 @Component({
   selector: 'app-truck-head',
@@ -30,6 +30,7 @@ export class TruckHeadComponent {
     this.totalTrucks = this.allTrucksFromInput.length;
     this.runningTrucks = 0;
     this.stoppedTrucks = 0;
+    this.idleTrucks = 0;
     this.allTrucksFromInput.forEach((truck) => {
       switch (this.truckDataService.getTruckType(truck)) {
         case running:
@@ -38,8 +39,11 @@ export class TruckHeadComponent {
         case stopped:
           this.stoppedTrucks++;
           break;
+        case idle:
+          this.idleTrucks++;
+          break;
       }
-    })
+    });
   }
 
   public showAllTrucks() {
@@ -48,6 +52,14 @@ export class TruckHeadComponent {
 
   public showRunningTrucks() {
     this.displayTruckType.emit(running);
+  }
+
+  public showStoppedTrucks() {
+    this.displayTruckType.emit(stopped);
+  }
+
+  public showIdleTrucks() {
+    this.displayTruckType.emit(idle);
   }
 
 }

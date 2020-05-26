@@ -18,7 +18,7 @@ export class TruckListComponent {
   public input = new FormControl('')
 
   public inputChanged() {
-    const inputValue = this.input.value
+    const inputValue = this.input.value;
     if (inputValue == '') {
       this.displayList = this.allTrucksFromInput;
     } else {
