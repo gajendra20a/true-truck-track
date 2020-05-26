@@ -6,12 +6,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'; // <-- NgModel 
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './containers/app.component';
-import {TruckTopComponent} from './components/truck-top/truck-top.component';
+import {TruckListComponent} from './components/truck-list/truck-list.component';
+import {TruckHeadComponent} from "./components/truck-head/truck-head.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TruckTopComponent
+    TruckListComponent,
+    TruckHeadComponent,
   ],
   imports: [
     BrowserModule,
