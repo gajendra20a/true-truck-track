@@ -1,0 +1,12 @@
+<div class="truck-component">
+  <h2>Trucks List</h2>
+  <div class="trucks">
+    <input [formControl]="input" (keyup)="inputChanged()" />
+    <div *ngFor="let truck of displayList">
+      <div class="truck-info">
+        <div class="truck-number">{{truck.truckNumber}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+

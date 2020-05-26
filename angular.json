@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "truck-app"
+    }
+  },
+  "defaultProject": "truck-app",
+  "cli": {
+    "analytics": "6ae7ba40-a611-4f0c-a7d8-f90b73ea5e8e"
+  }
 }
