@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {APITruck} from "../../models/apiTruck";
-import {FormControl} from "@angular/forms";
+import {APITruck} from '../../models/apiTruck';
 import {running, stopped, total, TruckDataService, idle} from "../../services/truck-data.service";
 
 @Component({
