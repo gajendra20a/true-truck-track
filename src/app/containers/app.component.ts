@@ -1,7 +1,7 @@
-import { error } from './../services/truck-data.service';
-import {Component, OnInit} from '@angular/core';
-import {APITruck} from "../models/apiTruck";
-import {running, stopped, total, idle, TruckDataService} from "../services/truck-data.service";
+import { Component, OnInit } from '@angular/core';
+import { APITruck } from '../models/apiTruck';
+import { total, TruckDataService } from '../services/truck-data.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   public allTrucks: APITruck[] = [];
   public listDisplayTrucks: APITruck[] = [];
 
-  constructor(private truckDataService: TruckDataService) {
+  constructor(
+    private truckDataService: TruckDataService
+    ) {
   }
 
   ngOnInit() {
