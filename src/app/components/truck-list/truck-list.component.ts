@@ -33,8 +33,7 @@ export class TruckListComponent {
       data: {tName: this.tName, tNumber: this.tNumber}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe((result = '') => {
       this.tName = result.tName;
       this.tNumber = result.tNumber;
     });

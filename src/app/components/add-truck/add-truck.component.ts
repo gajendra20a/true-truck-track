@@ -17,6 +17,7 @@ export class AddTruckComponent {
     @Inject(MAT_DIALOG_DATA) public data: TruckData) {}
 
   onNoClick(): void {
+    console.log('close modal');
     this.dialogRef.close();
   }
 
