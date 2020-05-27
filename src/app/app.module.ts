@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './containers/app.component';
 import {TruckListComponent} from './components/truck-list/truck-list.component';
 import {TruckHeadComponent} from "./components/truck-head/truck-head.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {TruckHeadComponent} from "./components/truck-head/truck-head.component";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
