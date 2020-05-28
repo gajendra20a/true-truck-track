@@ -11,7 +11,6 @@ export interface TruckData {
   styleUrls: ['./add-truck.component.css']
 })
 export class AddTruckComponent {
-
   constructor(
     public dialogRef: MatDialogRef<AddTruckComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TruckData) {}
