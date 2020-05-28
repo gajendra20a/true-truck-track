@@ -30,24 +30,24 @@ export interface LastRunningState {
 }
 
 export interface APITruck {
-  id: number;
-  companyId: number;
-  truckTypeId: number;
-  truckSizeId: number;
+  id?: number;
+  companyId?: number;
+  truckTypeId?: number;
+  truckSizeId?: number;
   truckNumber: string;
-  transporterId: number;
-  trackerType: number;
-  imeiNumber: string;
-  simNumber: string;
+  transporterId?: number;
+  trackerType?: number;
+  imeiNumber?: string;
+  simNumber?: string;
   name: string;
-  password: string;
-  createTime: any;
-  deactivated: boolean;
-  lastWaypoint: LastWaypoint;
-  lastRunningState: LastRunningState;
-  durationInsideSite: number;
-  fuelSensorInstalled: boolean;
-  externalTruck: boolean;
+  password?: string;
+  createTime?: any;
+  deactivated?: boolean;
+  lastWaypoint?: LastWaypoint;
+  lastRunningState?: LastRunningState;
+  durationInsideSite?: number;
+  fuelSensorInstalled?: boolean;
+  externalTruck?: boolean;
 }
 
 export interface TruckAPIResponse {

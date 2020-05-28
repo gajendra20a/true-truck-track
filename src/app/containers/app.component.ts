@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APITruck } from '../models/apiTruck';
 import { total, TruckDataService } from '../services/truck-data.service';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',

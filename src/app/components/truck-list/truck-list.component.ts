@@ -1,3 +1,4 @@
+import { TruckDataService } from './../../services/truck-data.service';
 import { Component, Input } from '@angular/core';
 import { APITruck } from "../../models/apiTruck";
 import { FormControl } from "@angular/forms";
@@ -17,7 +18,8 @@ export class TruckListComponent {
   }
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private truckDataService: TruckDataService,
   ){}
 
   allTrucksFromInput: APITruck[] = [];
@@ -33,9 +35,8 @@ export class TruckListComponent {
       data: {tName: this.tName, tNumber: this.tNumber}
     });
 
-    dialogRef.afterClosed().subscribe((result = '') => {
-      this.tName = result.tName;
-      this.tNumber = result.tNumber;
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.truckDataService.addNewTruck(result);
     });
   }
 
