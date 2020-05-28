@@ -19,5 +19,4 @@ export class AddTruckComponent {
     console.log('close modal');
     this.dialogRef.close();
   }
-
 }

@@ -19,8 +19,7 @@ export class TruckDataService {
 
   constructor(
     private http: HttpClient
-  ) {
-  }
+  ) { }
 
   get trucks$(): Observable<TruckAPIResponse> {
     return this.http.get(url) as Observable<TruckAPIResponse>;
@@ -31,8 +30,7 @@ export class TruckDataService {
         name: data.tName,
         truckNumber: data.tNumber
     };
-    console.log(response);
-    this.http.post(urlPost, response);
+    return this.http.post<APITruck>(urlPost, response).subscribe();
   }
 
   public getTruckType(truck: APITruck): string {
