@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APITruck} from '../../models/apiTruck';
-import {running, stopped, total, TruckDataService, idle} from "../../services/truck-data.service";
+import { running, stopped, total, TruckDataService, idle } from '../../services/truck-data.service';
 
 @Component({
   selector: 'app-truck-head',

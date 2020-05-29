@@ -1,29 +1,29 @@
-<div class="modal-content" uib-modal-transclude="">
-  <div class="modal-header ng-scope">
-    <h3 class="ng-binding">New Truck</h3>
+<div class='modal-content' uib-modal-transclude=''>
+  <div class='modal-header ng-scope'>
+    <h3 class='ng-binding'>New Truck</h3>
   </div>
-  <div class="modal-body ng-scope">
-    <form name="form" novalidate="" class="ng-pristine ng-invalid ng-invalid-required">
-        <div class="form-group">
+  <div class='modal-body ng-scope'>
+    <form name='form' novalidate='' class='ng-pristine ng-invalid ng-invalid-required'>
+        <div class='form-group'>
           <label>Truck Name</label>
-          <input type="text" name="truckName" 
-            style="text-transform:uppercase" 
-            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" 
-            matInput [(ngModel)]="data.tName">
+          <input type='text' name='truckName' 
+            style='text-transform:uppercase' 
+            class='form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched' 
+            matInput [(ngModel)]='data.tName'>
         </div>
-        <div class="form-group">
+        <div class='form-group'>
           <label>Truck Number *</label>
-          <input type="text" name="truckNumber" 
-            style="text-transform:uppercase" 
-            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" 
-            matInput [(ngModel)]="data.tNumber" required>
+          <input type='text' name='truckNumber' 
+            style='text-transform:uppercase' 
+            class='form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched' 
+            matInput [(ngModel)]='data.tNumber' required>
         </div>
     </form>
   </div>
-  <div class="modal-footer ng-scope">
-    <button class="btn btn-primary ng-binding" ng-disabled="saving" [mat-dialog-close]="data">
+  <div class='modal-footer ng-scope'>
+    <button class='btn btn-primary ng-binding' ng-disabled='saving' [mat-dialog-close]='data'>
         Add
     </button>
-    <button class="btn" (click)="onNoClick()">Cancel</button>
+    <button class='btn' (click)='onNoClick()'>Cancel</button>
   </div>
 </div>

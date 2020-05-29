@@ -1,7 +1,7 @@
 import { TruckDataService } from './../../services/truck-data.service';
 import { Component, Input } from '@angular/core';
-import { APITruck } from "../../models/apiTruck";
-import { FormControl } from "@angular/forms";
+import { APITruck } from '../../models/apiTruck';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTruckComponent } from './../add-truck/add-truck.component';
 
