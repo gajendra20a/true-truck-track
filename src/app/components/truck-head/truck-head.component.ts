@@ -1,21 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {APITruck} from '../../models/apiTruck';
-import { running, stopped, total, TruckDataService, idle } from '../../services/truck-data.service';
+import {running, stopped, total, TruckDataService, idle} from '../../services/truck-data.service';
 
 @Component({
   selector: 'app-truck-head',
   templateUrl: './truck-head.component.html',
   styleUrls: ['./truck-head.component.css']
 })
-export class TruckHeadComponent {
-  @Input() set allTrucks(allTrucks: APITruck[]) {
-    this.allTrucksFromInput = allTrucks;
-    this.setupTruckCount();
-  }
+export class TruckHeadComponent implements OnInit {
 
-  @Output() displayTruckType = new EventEmitter<string>();
-
-  public allTrucksFromInput: APITruck[] = [];
   public totalTrucks: number;
   public runningTrucks: number;
   public stoppedTrucks: number;
@@ -25,40 +18,47 @@ export class TruckHeadComponent {
   constructor(private truckDataService: TruckDataService) {
   }
 
-  private setupTruckCount() {
-    this.totalTrucks = this.allTrucksFromInput.length;
-    this.runningTrucks = 0;
-    this.stoppedTrucks = 0;
-    this.idleTrucks = 0;
-    this.allTrucksFromInput.forEach((truck) => {
-      switch (this.truckDataService.getTruckType(truck)) {
-        case running:
-          this.runningTrucks++;
-          break;
-        case stopped:
-          this.stoppedTrucks++;
-          break;
-        case idle:
-          this.idleTrucks++;
-          break;
+  ngOnInit() {
+    this.truckDataService.trucks$.subscribe((trucks) => {
+        this.totalTrucks = trucks.length;
+        this.runningTrucks = 0;
+        this.stoppedTrucks = 0;
+        this.idleTrucks = 0;
+        trucks.forEach((truck) => {
+          switch (truck.status) {
+            case running:
+              this.runningTrucks++;
+              break;
+            case stopped:
+              this.stoppedTrucks++;
+              break;
+            case idle:
+              this.idleTrucks++;
+              break;
+          }
+        });
       }
-    });
+    )
+  }
+
+  private setupTruckCount() {
+
   }
 
   public showAllTrucks() {
-    this.displayTruckType.emit(total);
+    this.truckDataService.updateFilter(total);
   }
 
   public showRunningTrucks() {
-    this.displayTruckType.emit(running);
+    this.truckDataService.updateFilter(running);
   }
 
   public showStoppedTrucks() {
-    this.displayTruckType.emit(stopped);
+    this.truckDataService.updateFilter(stopped);
   }
 
   public showIdleTrucks() {
-    this.displayTruckType.emit(idle);
+    this.truckDataService.updateFilter(idle);
   }
 
 }

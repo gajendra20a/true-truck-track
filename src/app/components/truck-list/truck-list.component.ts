@@ -1,9 +1,11 @@
-import { TruckDataService } from './../../services/truck-data.service';
-import { Component, Input } from '@angular/core';
-import { APITruck } from '../../models/apiTruck';
-import { FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { AddTruckComponent } from './../add-truck/add-truck.component';
+import {TruckDataService} from './../../services/truck-data.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {APITruck, APITruckWithStatus} from '../../models/apiTruck';
+import {FormControl} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {AddTruckComponent} from './../add-truck/add-truck.component';
+import {combineLatest, Observable} from "rxjs";
+import {startWith, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-truck-list',
@@ -11,25 +13,39 @@ import { AddTruckComponent } from './../add-truck/add-truck.component';
   styleUrls: ['./truck-list.component.css']
 })
 
-export class TruckListComponent {
-  @Input() set allTrucks(allTrucks: APITruck[]) {
-    this.allTrucksFromInput = allTrucks;
-    this.inputChanged();
-  }
-
+export class TruckListComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private truckDataService: TruckDataService,
-  ){}
+  ) {
+  }
 
-  allTrucksFromInput: APITruck[] = [];
-  displayList: APITruck[] = [];
+  displayList: APITruckWithStatus[] = [];
   input = new FormControl('');
   tName: string;
   tNumber: string;
 
+  ngOnInit() {
+    combineLatest([
+      this.truckDataService.listTrucks,
+      this.input.valueChanges.pipe(startWith(""))
+    ])
+      .pipe(tap(([trucks, input]) =>
+        console.log("I am on the component and filtering based on input string", trucks, input)
+      ))
+      .subscribe(([allTrucks, input]) => {
+        if (input === '') {
+          this.displayList = allTrucks;
+        } else {
+          this.displayList = allTrucks.filter((truck) => {
+            return truck.truckNumber?.indexOf(input) >= 0;
+          });
+        }
+      })
+  }
 
-  openAddTruck(){
+
+  openAddTruck() {
     const dialogRef = this.dialog.open(AddTruckComponent, {
       width: '600px',
       data: {tName: this.tName, tNumber: this.tNumber}
@@ -38,17 +54,6 @@ export class TruckListComponent {
     dialogRef.afterClosed().subscribe((result: any) => {
       this.truckDataService.addNewTruck(result);
     });
-  }
-
-  inputChanged() {
-    const inputValue = this.input.value;
-    if (inputValue === '') {
-      this.displayList = this.allTrucksFromInput;
-    } else {
-      this.displayList = this.allTrucksFromInput.filter((truck) => {
-        return truck.truckNumber.indexOf(inputValue) >= 0;
-      });
-    }
   }
 
 }

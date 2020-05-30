@@ -1,6 +1,6 @@
 <div class='truck-component'>
   <button class='truck-btn' mat-raised-button (click)='openAddTruck()'>Add Truck</button>
-  <input class='truck-search' [formControl]="input" (keyup)='inputChanged()' placeholder='Search Truck' type='text'/>
+  <input class='truck-search' [formControl]="input" placeholder='Search Truck' type='text'/>
   <div class='trucks'>
     <div *ngFor='let truck of displayList'>
       <div class='truck-info'>

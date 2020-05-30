@@ -54,3 +54,7 @@ export interface TruckAPIResponse {
   responseCode: ResponseCode;
   data: APITruck[];
 }
+
+export interface APITruckWithStatus extends APITruck{
+  status: string;
+}
